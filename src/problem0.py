@@ -346,7 +346,7 @@ def problem0c(circle, n, window):
         window.render(0.5)
         x += diameter
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
