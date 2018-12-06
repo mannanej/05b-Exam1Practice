@@ -102,6 +102,19 @@ def problem2a(circle, rectangle, window):
       :type rectangle: rg.Rectangle
       :type window:    rg.RoseWindow
     """
+
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    startpoint = rg.Point(rectangle.corner_2.x, rectangle.corner_1.y)
+    endpoint = rg.Point(rectangle.corner_1.x, rectangle.corner_2.y)
+    line = rg.Line(startpoint, endpoint)
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    circle.fill_color = rectangle.outline_color
+
     # -------------------------------------------------------------------------
     # TODO: 2. Implement and test this function.
     #          Tests have been written for you (above).
