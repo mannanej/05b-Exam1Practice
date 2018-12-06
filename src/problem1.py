@@ -365,7 +365,7 @@ def problem1c(n):
     value1 = value1 + sum_of_digits(j)
     return value1
     # -------------------------------------------------------------------------
-    # TODONE: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
