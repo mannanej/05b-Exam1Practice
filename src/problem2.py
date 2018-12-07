@@ -114,6 +114,13 @@ def problem2a(circle, rectangle, window):
     window.render()
     window.continue_on_mouse_click()
     circle.fill_color = rectangle.outline_color
+    window.continue_on_mouse_click()
+    startpoint2 = rg.Point(rectangle.corner_2.x, rectangle.corner_1.y)
+    endpoint2 = rg.Point(rectangle.corner_1.x, rectangle.corner_2.y)
+    line = rg.Line(startpoint2, endpoint2)
+    line.attach_to(window)
+    window.render()
+
 
     # -------------------------------------------------------------------------
     # TODO: 2. Implement and test this function.
