@@ -38,7 +38,7 @@ def main():
 def run_test_problem3a():
     """ Tests the   problem3a   function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   5   ** tests (we wrote four for you).
     # -------------------------------------------------------------------------
@@ -99,11 +99,24 @@ def run_test_problem3a():
     window3.close_on_mouse_click()
 
     # -------------------------------------------------------------------------
-    # TO DO: 2 (continued).
+    # DONE: 2 (continued).
     # Below this comment (or integrated with one of the above tests,
     # your choice), add 1 more test case of your own choosing.
     # -------------------------------------------------------------------------
 
+    # Window 4:
+    title = 'Problem 3a. Test 5: Start at (40, 40), 10 lines'
+    window4 = rg.RoseWindow(450, 300, title)
+
+    # Test 5 (it is on window 4):
+    point = rg.Point(40, 40)
+    expected = 218
+    answer = problem3a(window4, point, 10)
+    print()
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
+    window4.close_on_mouse_click()
 
 def problem3a(window, point, n):
     """
@@ -137,6 +150,18 @@ def problem3a(window, point, n):
         :type point:  rg.Point
         :type n:      int
     """
+    line = rg.Line(point, rg.Point(point.x, point.y + 50))
+    line.thickness = 1
+    line.attach_to(window)
+    window.render()
+    for k in range(n + 1):
+        line = rg.Line(rg.Point(point.x + 20, point.y + 10), rg.Point(point.x + 20, point.y + 60))
+        if line.thickness < 14:
+            line.thickness + 2
+        line.attach_to(window)
+    window.render()
+
+
     # -------------------------------------------------------------------------
     # TODO: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
