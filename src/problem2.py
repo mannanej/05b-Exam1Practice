@@ -115,9 +115,9 @@ def problem2a(circle, rectangle, window):
     window.continue_on_mouse_click()
     circle.fill_color = rectangle.outline_color
     window.continue_on_mouse_click()
-    startpoint2 = rg.Point(rectangle.corner_2.x, rectangle.corner_1.y)
-    endpoint2 = rg.Point(rectangle.corner_1.x, rectangle.corner_2.y)
-    line = rg.Line(startpoint2, endpoint2)
+    startpoint = rg.Point(rectangle.corner_2.x, rectangle.corner_1.y)
+    endpoint = rg.Point(rectangle.corner_1.x, rectangle.corner_2.y)
+    line = rg.Line(startpoint, endpoint)
     line.attach_to(window)
     window.render()
 
@@ -193,6 +193,15 @@ def problem2b(rect, n, delta, win):
       :type delta:  int
       :type win:    rg.RoseWindow
     """
+    rect = rg.Rectangle(rg.Point(rect.corner_1.x, rect.corner_1.y), rg.Point(rect.corner_2.x, rect.corner_2.y))
+    rect.attach_to(win)
+    win.render()
+    value1 = rg.Point(rect.corner_1.x, rect.corner_1.y)
+    value2 = rg.Point(rect.corner_2.x, rect.corner_2.y)
+    for k in range(n + 1):
+        rect = rg.Rectangle(value1, value2)
+        rect.attach_to(win)
+    win.render()
     # -------------------------------------------------------------------------
     # TODO: 3. Implement and test this function.
     #          Tests have been written for you (above).
