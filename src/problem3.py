@@ -150,14 +150,13 @@ def problem3a(window, point, n):
         :type point:  rg.Point
         :type n:      int
     """
-    line = rg.Line(point, rg.Point(point.x, point.y + 50))
-    line.thickness = 1
-    line.attach_to(window)
-    window.render()
-    for k in range(n + 1):
-        line = rg.Line(rg.Point(point.x + 20, point.y + 10), rg.Point(point.x + 20, point.y + 60))
-        if line.thickness < 14:
-            line.thickness + 2
+    for k in range(n):
+        line = rg.Line(rg.Point(point.x + (20 * k), point.y + (10 * k)), rg.Point(point.x + (20 * k), point.y + (10 * k) + 50))
+        if k < 7:
+            line.thickness += 2 * k
+        else:
+            line.thickness = 13
+        print(line.thickness)
         line.attach_to(window)
     window.render()
 
