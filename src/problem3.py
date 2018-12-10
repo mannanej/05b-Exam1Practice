@@ -110,10 +110,10 @@ def run_test_problem3a():
 
     # Test 5 (it is on window 4):
     point = rg.Point(40, 40)
-    expected = 218
+    expected = 88
     answer = problem3a(window4, point, 10)
     print()
-    print('Test 4 expected:', expected)
+    print('Test 5 expected:', expected)
     print('       actual:  ', answer)
 
     window4.close_on_mouse_click()
@@ -150,19 +150,20 @@ def problem3a(window, point, n):
         :type point:  rg.Point
         :type n:      int
     """
+    sum = 0
     for k in range(n):
         line = rg.Line(rg.Point(point.x + (20 * k), point.y + (10 * k)), rg.Point(point.x + (20 * k), point.y + (10 * k) + 50))
         if k < 7:
             line.thickness += 2 * k
         else:
             line.thickness = 13
-        print(line.thickness)
+        sum += line.thickness
         line.attach_to(window)
     window.render()
-
+    return sum
 
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -225,8 +226,15 @@ def problem3b(m, point1):
         :type m:      int
         :type point1: rg.Point
     """
+    window = rg.RoseWindow(400, 650)
+    sum = 0
+    for k in range(m):
+        sum += problem3a(window, rg.Point(point1.x, point1.y + (k * 60)), (2*k) + 3)
+    window.close_on_mouse_click()
+    return sum
+
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
