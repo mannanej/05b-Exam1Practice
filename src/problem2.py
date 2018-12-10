@@ -109,17 +109,19 @@ def problem2a(circle, rectangle, window):
     window.continue_on_mouse_click()
     startpoint = rg.Point(rectangle.corner_2.x, rectangle.corner_1.y)
     endpoint = rg.Point(rectangle.corner_1.x, rectangle.corner_2.y)
+    if rectangle.corner_1.x > rectangle.corner_2.x and rectangle.corner_1.y < rectangle.corner_2.y:
+        startpoint = rectangle.corner_1
+        endpoint = rectangle.corner_2
+    elif rectangle.corner_2.x > rectangle.corner_1.x and rectangle.corner_2.y < rectangle.corner_1.y:
+        startpoint = rectangle.corner_2
+        endpoint = rectangle.corner_1
     line = rg.Line(startpoint, endpoint)
     line.attach_to(window)
     window.render()
     window.continue_on_mouse_click()
     circle.fill_color = rectangle.outline_color
-    window.continue_on_mouse_click()
-    startpoint = rg.Point(rectangle.corner_2.x, rectangle.corner_1.y)
-    endpoint = rg.Point(rectangle.corner_1.x, rectangle.corner_2.y)
-    line = rg.Line(startpoint, endpoint)
-    line.attach_to(window)
     window.render()
+    window.continue_on_mouse_click()
 
 
     # -------------------------------------------------------------------------
