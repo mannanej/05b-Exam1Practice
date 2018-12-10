@@ -195,17 +195,26 @@ def problem2b(rect, n, delta, win):
       :type delta:  int
       :type win:    rg.RoseWindow
     """
-    rect = rg.Rectangle(rg.Point(rect.corner_1.x, rect.corner_1.y), rg.Point(rect.corner_2.x, rect.corner_2.y))
-    rect.attach_to(win)
-    win.render()
-    value1 = rg.Point(rect.corner_1.x, rect.corner_1.y)
-    value2 = rg.Point(rect.corner_2.x, rect.corner_2.y)
-    for k in range(n + 1):
-        rect = rg.Rectangle(value1, value2)
-        rect.attach_to(win)
-    win.render()
+    for k in range(n):
+        if rect.corner_1.x < rect.corner_2.x and rect.corner_1.y > rect.corner_2.y:
+            corner1 = rg.Point(rect.corner_1.x - (delta * k), rect.corner_1.y + (delta * k))
+            corner2 = rg.Point(rect.corner_2.x + (delta * k), rect.corner_2.y - (delta * k))
+        elif rect.corner_1.x < rect.corner_2.x and rect.corner_1.y < rect.corner_2.y:
+            corner1 = rg.Point(rect.corner_1.x - (delta * k), rect.corner_1.y - (delta * k))
+            corner2 = rg.Point(rect.corner_2.x + (delta * k), rect.corner_2.y + (delta * k))
+        elif rect.corner_1.x > rect.corner_2.x and rect.corner_1.y < rect.corner_2.y:
+            corner1 = rg.Point(rect.corner_1.x + (delta * k), rect.corner_1.y - (delta * k))
+            corner2 = rg.Point(rect.corner_2.x - (delta * k), rect.corner_2.y + (delta * k))
+        else:
+            corner1 = rg.Point(rect.corner_1.x + (delta * k), rect.corner_1.y + (delta * k))
+            corner2 = rg.Point(rect.corner_2.x - (delta * k), rect.corner_2.y - (delta * k))
+        rect2 = rg.Rectangle(corner1, corner2)
+        if k == 0:
+            rect2.fill_color = rect.fill_color
+        rect2.attach_to(win)
+        win.render()
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
